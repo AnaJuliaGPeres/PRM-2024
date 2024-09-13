@@ -1,24 +1,44 @@
-import './style.css'
+
+import { AppBar, Box, Button, Container, styled, Toolbar, Typography } from '@mui/material'
+
+
+ const MenuButton = styled(Button)({
+
+    color: '#fff',
+    fontWeight: '400',
+    })
 
 function Header() {
 
     return (
-        <header>
-            <div className="container">
-                <div className="toolbar">
-                    <h6>Mater Play </h6>
-                    <nav>
-                        <ul>
-                            <li><a href="#">Todos</a></li>
-                            <li><a href="#"></a>Series</li>
-                            <li><a href="#"></a>Filmes</li>
+        <AppBar> 
 
-                        </ul>
-                    </nav>
-                </div>
-            </div>
+            <Container>
 
-        </header>
+                <Toolbar>
+
+                    <Typography variant ="h6">
+                        Mater Play
+
+                    </Typography>
+                    <Box
+                         sx={{ 
+                            paddingLeft: '1rem', //espaço na lateral esquerda do elemento
+                            
+                         }}
+                    >
+                        
+                        <MenuButton variant="text" disabled>Todos</MenuButton >
+                        <MenuButton variant="text">Series</MenuButton>
+                        <MenuButton variant="text">Filmes</MenuButton>
+
+                    
+                    </Box>   
+
+                </Toolbar>
+            </Container>
+        </AppBar>
+        
     )
 }
 
