@@ -17,13 +17,13 @@ function  MovieCard( { poster}  : MovieCardProps) {
             minWidth:'10rem'
         }}
        > 
-        <img src="{poster}"
+        <img src ={poster}
              style={{
                 width:'100%'
              }}
         >
         
-        
+ 
         
         </img>
        </Paper>
