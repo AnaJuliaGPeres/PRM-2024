@@ -12,16 +12,18 @@ const getMovies = async (): Promise<IMOVIE[]> => {
 
 
 
-const getMoviesByID = async (id: string): Promise<IMOVIE> => {
+const getMoviesByID = async (id: string): Promise<IMOVIE[]> => {
     const { data} = await API.get(`${_ENDPOINT}/${id}`)         
     return data;}
 
-
+const getByCategoryId = async (id: number): Promise<IMOVIE[]> => {
+        const { data} = await API.get(`${_ENDPOINT}?categoryId=${id}`)         
+        return data;}
 
 export const moviesService = {
-    getMovies
+    getMovies,
+    getMoviesByID,
+    getByCategoryId
 }
 
-export const moviesServiceByID = {
-    getMoviesByID
-}
+

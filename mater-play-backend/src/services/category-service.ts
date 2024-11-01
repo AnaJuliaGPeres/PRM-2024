@@ -15,7 +15,9 @@ export class CategoryServices {
 
 
    findAll(): Promise<Category[]>{
-      return this.repository.find();
+      return this.repository.find({
+         where: {active: true, }
+      });
    }
 
 

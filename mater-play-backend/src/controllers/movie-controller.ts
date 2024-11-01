@@ -1,8 +1,10 @@
 
-import { Controller, Get, HttpException, HttpStatus, Param, ParseIntPipe, Post, Put, Body, Patch, Delete, HttpCode, ParseUUIDPipe } from "@nestjs/common";
+import { Controller, Get, HttpException, HttpStatus, Param, ParseIntPipe, Post, Put, Body, Patch, Delete, HttpCode, ParseUUIDPipe, Query } from "@nestjs/common";
 import { find } from "rxjs";
 import { Movie } from "src/entities/movie-entity";
 import { MovieServices } from "src/services/movie-services";
+import { Category } from "src/entities/category-entity";
+
 
 @Controller('movies')
 export class MovieController {
@@ -13,7 +15,12 @@ export class MovieController {
 
     @Get()
 
-    findAll(): Promise<Movie[]> {
+    findAll(@Query('categoryId') categoryId?: string): Promise<Movie[]> {
+        if (categoryId) {
+            return this.service.findByCategory({
+                id: Number (categoryId), 
+            } as Category); 
+        }
         return this.service.findAll();
     }
 
@@ -37,14 +44,14 @@ export class MovieController {
     }
 
     @Put(':id')
-    async update(@Param('id', ParseUUIDPipe) id:string, @Body() Movie: Movie): Promise<Movie> {
+    async update(@Param('id', ParseUUIDPipe) id:string, @Body() movie: Movie,): Promise<Movie> {
         const found = await this.service.findById(id);
         if(!found) {
             throw new HttpException ('Movie not found', HttpStatus.NOT_FOUND);
         }
 
-        Movie.id = found.id;
-        return this.service.save(Movie);                     
+        movie.id = found.id;
+        return this.service.save(movie);                     
     }   
 
 

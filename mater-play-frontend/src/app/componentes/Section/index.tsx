@@ -1,24 +1,26 @@
 import { Box, Container, Stack, Typography } from "@mui/material"
 import MovieCard from "../MovieCard"
 import { useEffect, useState } from "react";
-import { IMOVIE } from "../../@libs/axios/typez";
+import { ICategory, IMOVIE } from "../../@libs/axios/typez";
 import { moviesService } from "../../services/movies-service";
 
 
 
 type SectionProps = {
-        title : string;
+        category : ICategory;
 }
 
-function  Section({title} : SectionProps) {
+function  Section({category} : SectionProps) {
 
     const  [movies, setMovies] = useState<IMOVIE[]>([])
     
     useEffect(() => {
         //executa o que esta aqui dentro quando carrega componete
-        moviesService.getMovies().then(result=> {
+        if(category.id) {
+        moviesService.getByCategoryId(category.id).then(result=> {
            setMovies(result)
-        })
+        });
+        }
 
     }, [])
 
@@ -32,7 +34,7 @@ function  Section({title} : SectionProps) {
                         paddingTop: '2rem',
                     }}
                 >
-                    {title}
+                    {category.name}
                 </Typography>
 
                 <Stack direction="row"
