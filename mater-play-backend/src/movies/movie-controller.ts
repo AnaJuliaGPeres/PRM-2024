@@ -1,9 +1,9 @@
 
 import { Controller, Get, HttpException, HttpStatus, Param, ParseIntPipe, Post, Put, Body, Patch, Delete, HttpCode, ParseUUIDPipe, Query } from "@nestjs/common";
 import { find } from "rxjs";
-import { Movie } from "src/entities/movie-entity";
-import { MovieServices } from "src/services/movie-services";
-import { Category } from "src/entities/category-entity";
+import { Movie } from "src/movies/movie-entity";
+import { MovieServices } from "src/movies/movie-services";
+import { Category } from "src/categories/category-entity";
 
 
 @Controller('movies')

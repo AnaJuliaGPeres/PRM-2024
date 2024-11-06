@@ -1,5 +1,5 @@
 import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Category } from "./category-entity";
+import { Category } from "../categories/category-entity";
 import { JoinTable } from "typeorm";
 
 @Entity('movie')

@@ -1,9 +1,9 @@
 
 import { Repository } from "typeorm";
-import { Movie } from "../entities/movie-entity";
+import { Movie } from "./movie-entity";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Injectable } from "@nestjs/common";
-import { Category } from "../entities/category-entity";
+import { Category } from "../categories/category-entity";
 
 @Injectable()
 

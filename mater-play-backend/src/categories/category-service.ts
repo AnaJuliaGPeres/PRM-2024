@@ -1,6 +1,6 @@
 
 import { Repository } from "typeorm";
-import { Category } from "../entities/category-entity";
+import { Category } from "../categories/category-entity";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Injectable } from "@nestjs/common";
 

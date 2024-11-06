@@ -1,23 +1,25 @@
 import { Paper } from '@mui/material'
+import { IMOVIE } from '../../@libs/axios/typez'
 
 type MovieCardProps = {
-   poster:String;
-
+   movie: IMOVIE;
 }
 
-function  MovieCard( { poster}  : MovieCardProps) {
+function MovieCard({
+   movie
+}: MovieCardProps) {
     
     return (
        <Paper
         component="a"
         elevation={0}
-        href="/1"
+        href={movie.id}
         sx={{
 
             minWidth:'10rem'
         }}
        > 
-        <img src={poster}
+        <img src={ 'assets/${movie.poster}' }
              style={{
                 width:'100%'
              }}
