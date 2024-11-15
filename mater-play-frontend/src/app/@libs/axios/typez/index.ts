@@ -1,3 +1,7 @@
+export interface IGenre{
+    id?: number;
+    name: string;
+}
 export interface ICategory{
     id?: number;
     name: string;
@@ -11,4 +15,6 @@ export interface IMOVIE {
     decription: string;
     poster: string;
     ageRating: string;
+    categories: ICategory[];
+    genres: IGenre[];
 }
