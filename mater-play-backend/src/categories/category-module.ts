@@ -30,5 +30,4 @@ controllers: [CategoryController],
 
 
 
-
 export class CategoryModule {}
